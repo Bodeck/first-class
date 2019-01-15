@@ -17,22 +17,29 @@ Phone.prototype.volumeUp = function(){
     if(this.volume.current < this.volume.max) {
         this.volume.current ++;
     }
-    console.log('Volume:' + this.volume.current + '/' + this.volume.max);
+    this.volumeShow();
 }
 
 Phone.prototype.volumeDown = function(){
     if(this.volume.current > this.volume.min) {
         this.volume.current --;
     }
+    this.volumeShow();
+}
+Phone.prototype.mute = function() {
+    this.volume.current = 0;
+    this.volumeShow();
+}
+Phone.prototype.volumeShow = function(){
     console.log('Volume:' + this.volume.current + '/' + this.volume.max);
 }
-
 samsungGalaxyS6 = new Phone('Samsung', 2300, 'black');
 iPhone6s = new Phone('Apple', 1600, 'gold');
 onePlusOne = new Phone('OnePlus', 1300, 'white');
 
 samsungGalaxyS6.printInfo();
 iPhone6s.printInfo();
+onePlusOne.mute();
 onePlusOne.volumeUp();
 onePlusOne.volumeUp();
 onePlusOne.volumeUp();
