@@ -11,14 +11,18 @@ function Phone(brand, price, color) {
 }
 
 Phone.prototype.clickPowerBtn = function(){
-
-    setTimeout(() => {
-        var msg = this.isOn ? 'Turning off...':'Turning on...';
-        console.log(msg);
-        this.isOn = !this.isOn;
-        msg = this.isOn ? 'Welcome! \n Device is now on!':'Bye bye!';
-        console.log(msg);        
-    }, 500);
+    var msg = this.isOn ? 'Turning off...':'Turning on...';
+    console.log(msg);
+    var timeout = new Date().getTime() + 3000;
+    while (true) {
+        var currTime = new Date().getTime();
+        if (currTime > timeout) {
+            break
+        }
+    }
+    this.isOn = !this.isOn;
+    msg = this.isOn ? 'Welcome! \n Device is now on!':'Bye bye!';
+    console.log(msg);
 };
 
 Phone.prototype.printInfo = function(){
